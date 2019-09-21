@@ -1,0 +1,59 @@
+1、JSP的组成
+可以写脚本--java代码
+<%!    int a = 715;  %>
+
+Servlet{
+ int a = 715;
+Service(request,response){
+}
+}
+
+<% int bbb= 517; %>
+Servlet{
+ Service(request,response){
+int bbb= 517;
+}
+}
+
+<%=bbb%>
+
+Servlet{
+ Service(request,response){
+Response.getWriter().print(bbb);
+}
+}
+
+2、多种注释方式
+
+<!--Html注释-->----在翻译成的java文件中可见，网页源码中能看到该注释
+/*Java注释 */----在翻译成的java文件中可见，网页源码中不能看到该注释
+<%--Jsp注释--%>----在翻译成的java文件中不可见，网页源码中不能看到该注释
+
+3、指令
+Page  设置当前jsp页面的属性设置
+Language：当前jsp中可以使用的脚本语言
+contentType：告诉浏览器使用utf-8的形式解码
+        pageEncoding：当前jsp页面的编码方式设置utf-8
+ 	    Session：默认为true,当设置为false时，不可使用session内置对象
+Import：导包
+errorPage：当当前页面发生异常时，进入到该属性设置的路径
+isErrorPage：默认值为false,当设置为true是，可以直接使用exception内置对象
+
+
+
+web.xml配置文件中设置
+//访问路径错误 跳转到error.jsp
+<error-page>
+  <error-code>404</error-code>
+  <location>404.jsp</location>
+</error-page>
+
+
+
+
+
+
+
+
+Include  静态包含
+Taglib   标准标签库
