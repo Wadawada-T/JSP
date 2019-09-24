@@ -1,0 +1,85 @@
+include:静态包含
+
+<%@ include file ="./header.jsp"%>                头部内容
+
+<h1>主要内容</h1>                                   主要内容
+
+<%@ include file="./footer.jsp"%>                   尾部内容
+
+总结： 当前jsp页面以及被静态包含的所有jsp页面，一起转换为一个Java文件，在编译成一个class文件
+
+
+
+内置对象：
+
+request               HttpServletRequest        域对象（一次请求）
+session               HttpSession               域对象（一次会话）
+pageContext           PageContext               jsp中独有的域对象（当前页面）
+application           ServletContext            域对象（整个项目）
+
+response              HttpServletResponse
+out                   JspWriter                 response.getWriter()
+page                  this
+config                ServletConfig
+exception             异常
+
+
+域对象：
+servlet: servletContext  session  reqiest
+
+jsp: application  session   request  pageContext
+
+jsp中的域对象
+域对象               范围
+application         applicationScope
+session             sessionScope
+request             requestScope
+pageContext         pageScope
+
+
+域对象都有的方法
+getAttribute("")
+setAttribute("","")
+removeAttribute("")
+
+
+pageContext域对象有一个独有的方法： findAttribute()
+1、可以获取所有其他域对象中的值
+2、当不同域对象中有相同key值时，是从最小范围开始寻找，找到即可
+
+
+动态标签
+<jsp:include page="header.jsp"></jsp:include>         头部
+
+<h1>主体</h1>                                          主体内容
+
+<jsp:include page="footer.jsp"></jsp:include>           尾部内容
+
+
+1、动态包含
+<jsp:include page=”url”></jsp:include>
+
+总结：当前jsp页面以及所有被动态包含的页面分别转换为java文件，再分别编译成class文件，显式的时候才整合在一个页面中
+
+2、请求转发
+<jsp:forward page=”url”></jsp:forward>
+
+
+
+实现访问首页：
+Index.jsp--->转发到servlet中--》依赖service/依赖dao获取到的结果返回到servlet中，将结果存储到域request对象中--》转发到真正的jsp首页显式
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
